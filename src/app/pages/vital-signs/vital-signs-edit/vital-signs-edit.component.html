@@ -1,0 +1,68 @@
+<form [formGroup]="form" (submit)="operate()">
+
+  <div [hidden]="true">
+    <mat-form-field>
+      <input matInput placeholder="ID" required formControlName="idVitalSign">
+    </mat-form-field>
+  </div>
+
+
+  <mat-form-field class="example-50">
+    <mat-label>Select Patient: </mat-label>
+    <input matInput formControlName="patient" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+      <mat-option *ngFor="let option of listPatient" [value]="option">
+        {{option.firstName}} {{option.lastName}}
+      </mat-option>
+    </mat-autocomplete>
+    <small *ngIf="f['patient'].errors?.['required'] && f['patient'].touched" class="invalid">Is required</small>
+
+  </mat-form-field>
+
+  <button mat-raised-button type="button" color="primary" (click)="openDialog()" class="example-50">
+    <mat-icon>patient</mat-icon>
+    <span>Add New Patient</span>
+  </button>
+
+  <mat-form-field class="example-50">
+    <mat-label>Date: </mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <small *ngIf="f['date'].errors?.['required'] && f['date'].touched" class="invalid">Is required</small>
+  </mat-form-field>
+
+  <mat-form-field class="example-50">
+    <mat-label>Temperature: </mat-label>
+    <input matInput placeholder="Temperature" formControlName="temperature">
+    <small *ngIf="f['temperature'].errors?.['required'] && f['temperature'].touched" class="invalid">Is required</small>
+  </mat-form-field>
+
+  <mat-form-field class="example-50">
+    <mat-label>Pulse: </mat-label>
+    <input matInput placeholder="Pulse" formControlName="pulse">
+    <small *ngIf="f['pulse'].errors?.['required'] && f['pulse'].touched" class="invalid">Is required</small>
+  </mat-form-field>
+
+  <mat-form-field class="example-50">
+    <mat-label>Respiratory Rate: </mat-label>
+    <input matInput placeholder="Respiratory Rate" formControlName="respiratoryRate">
+    <small *ngIf="f['respiratoryRate'].errors?.['required'] && f['respiratoryRate'].touched" class="invalid">Is
+      required</small>
+
+  </mat-form-field>
+
+  <div style="justify-content: center; display: flex">
+    <button mat-raised-button type="submit" color="primary" class="example-30" style="margin-right: 10px;">
+      <mat-icon>done</mat-icon>
+      <span>Done</span>
+    </button>
+
+    <button mat-raised-button type="button" color="accent" routerLink="/pages/signs" class="example-30">
+      <mat-icon>cancel</mat-icon>
+      <span>Cancel</span>
+    </button>
+  </div>
+
+
+</form>

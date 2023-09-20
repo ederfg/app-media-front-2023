@@ -1,0 +1,31 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.example-container>* {
+    width: 100%;
+}
+
+.invalid {
+    color: red;
+}
+.example-50{
+    width: 50%;
+}
+
+.example-30{
+    width: 30%;
+}
+
+.example-100{
+    width: 100%;
+}
+
+example-center{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: 100vh !important;
+
+}
